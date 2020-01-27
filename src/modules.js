@@ -50,7 +50,7 @@ function getModulesTasks(baseTask, app) {
 		}
 	}
 
-	return gulp.series(tasks);
+	return gulp.series(tasks.join());
 }
 
 // Clean

@@ -43,7 +43,7 @@ function getLibrariesTasks(baseTask) {
 	    tasks.push(baseTask + '.' + libraries[index]);
 	}
 
-	return gulp.series(tasks);
+	return gulp.series(tasks.join());
 }
 
 // Clean
