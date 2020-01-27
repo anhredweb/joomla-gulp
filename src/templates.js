@@ -49,7 +49,7 @@ function getTemplatesTasks(baseTask, app) {
 		}
 	}
 
-	return gulp.series(tasks.join());
+	return gulp.series.apply(gulp, tasks);
 }
 
 // Clean test site

@@ -43,7 +43,7 @@ function getPackagesTasks(baseTask) {
 	    tasks.push(baseTask + '.' + packages[index]);
 	}
 
-	return gulp.series(tasks.join());
+	return gulp.series.apply(gulp, tasks);
 }
 
 // Clean

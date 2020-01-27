@@ -43,7 +43,7 @@ function getMediaTasks(baseTask) {
 	    tasks.push(baseTask + '.' + media[index]);
 	}
 
-	return gulp.series(tasks.join());
+	return gulp.series.apply(gulp, tasks);
 }
 
 // Clean test site
