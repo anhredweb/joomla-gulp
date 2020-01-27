@@ -50,7 +50,7 @@ function getPluginsTasks(baseTask) {
 		}
 	}
 
-	return tasks;
+	return gulp.series(tasks);
 }
 
 // Clean

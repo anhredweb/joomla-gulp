@@ -43,7 +43,7 @@ function getComponentsTasks(baseTask) {
 	    tasks.push(baseTask + '.' + components[index]);
 	}
 
-	return tasks;
+	return gulp.series(tasks);
 }
 
 // Clean

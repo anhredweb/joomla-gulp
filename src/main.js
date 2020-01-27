@@ -17,7 +17,7 @@ if (config.hasOwnProperty('browserSyncProxy'))
 var browserConfig = config.hasOwnProperty('browserConfig') ? config.browserConfig : defaultBrowserConfig;
 
 // Check if config has defaultTasks defined
-var defaultTasks = config.hasOwnProperty('defaultTasks') ? config.defaultTasks : ['copy', 'watch', 'browser-sync'];
+var defaultTasks = config.hasOwnProperty('defaultTasks') ? config.defaultTasks : gulp.series('copy', 'watch', 'browser-sync');
 
 // Tools / Dependencies
 var browserSync = require('browser-sync');
@@ -32,7 +32,7 @@ gulp.task('browser-sync', function() {
 // Clean test site
 gulp.task(
 	'clean',
-	[
+	gulp.series(
 		'clean:components',
 		'clean:libraries',
 		'clean:media',
@@ -40,12 +40,12 @@ gulp.task(
 		'clean:packages',
 		'clean:plugins',
 		'clean:templates'
-	], function() {
+	), function() {
 		return true;
 });
 
 // Copy to test site
-gulp.task('copy', [
+gulp.task('copy', gulp.series(
 		'copy:components',
 		'copy:libraries',
 		'copy:media',
@@ -53,12 +53,12 @@ gulp.task('copy', [
 		'copy:packages',
 		'copy:plugins',
 		'copy:templates'
-	], function() {
+	), function() {
 		return true;
 });
 
 // Watch for file changes
-gulp.task('watch', [
+gulp.task('watch', gulp.series(
 		'watch:components',
 		'watch:libraries',
 		'watch:media',
@@ -66,7 +66,7 @@ gulp.task('watch', [
 		'watch:packages',
 		'watch:plugins',
 		'watch:templates'
-	], function() {
+	), function() {
 		return true;
 });
 
