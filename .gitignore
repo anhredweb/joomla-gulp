@@ -7,3 +7,6 @@ npm-debug.log
 
 # Never ignore
 !.gitignore
+
+# phpStorm
+.idea/**
