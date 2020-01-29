@@ -55,30 +55,30 @@ function getPluginsTasks(baseTask) {
 		return gulp.series.apply(gulp, tasks);
 	}
 
-	return gulp.task(baseTask, function () {
-		return true;
+	return gulp.task(baseTask, function (cb) {
+		cb();
 	})
 }
 
 // Clean
 gulp.task('clean:plugins',
 	getPluginsTasks('clean:plugins'),
-	function() {
-		return true;
+	function(cb) {
+		cb();
 });
 
 // Copy
 gulp.task('copy:plugins',
 	getPluginsTasks('copy:plugins'),
-	function() {
-		return true;
+	function(cb) {
+		cb();
 });
 
 // Watch
 gulp.task('watch:plugins',
 	getPluginsTasks('watch:plugins'),
-	function() {
-		return true;
+	function(cb) {
+		cb();
 });
 
 exports.getPlugins = getPlugins;

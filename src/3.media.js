@@ -48,30 +48,30 @@ function getMediaTasks(baseTask) {
 		return gulp.series.apply(gulp, tasks);
 	}
 
-	return gulp.task(baseTask, function () {
-		return true;
+	return gulp.task(baseTask, function (cb) {
+		cb();
 	})
 }
 
 // Clean test site
 gulp.task('clean:media',
 	getMediaTasks('clean:media'),
-	function() {
-		return true
+	function(cb) {
+		cb();
 });
 
 // Copy to test site
 gulp.task('copy:media',
 	getMediaTasks('copy:media'),
-	function() {
-		return true;
+	function(cb) {
+		cb();
 });
 
 // Watch
 gulp.task('watch:media',
 	getMediaTasks('watch:media'),
-	function() {
-		return true;
+	function(cb) {
+		cb();
 });
 
 exports.getMedia = getMedia;

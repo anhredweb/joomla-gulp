@@ -48,30 +48,30 @@ function getLibrariesTasks(baseTask) {
 		return gulp.series.apply(gulp, tasks);
 	}
 
-	return gulp.task(baseTask, function () {
-		return true;
+	return gulp.task(baseTask, function (cb) {
+		cb();
 	})
 }
 
 // Clean
 gulp.task('clean:libraries',
 	getLibrariesTasks('clean:libraries'),
-	function() {
-		return true;
+	function (cb) {
+		cb();
 });
 
 // Copy
 gulp.task('copy:libraries',
 	getLibrariesTasks('copy:libraries'),
-	function() {
-		return true;
+	function (cb) {
+		cb();
 });
 
 // Watch
 gulp.task('watch:libraries',
 	getLibrariesTasks('watch:libraries'),
-	function() {
-		return true;
+	function (cb) {
+		cb();
 });
 
 exports.getLibraries = getLibraries;

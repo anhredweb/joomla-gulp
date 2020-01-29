@@ -48,30 +48,30 @@ function getComponentsTasks(baseTask) {
 		return gulp.series.apply(gulp, tasks);
 	}
 
-	return gulp.task(baseTask, function () {
-		return true;
+	return gulp.task(baseTask, function (cb) {
+		cb();
 	})
 }
 
 // Clean
 gulp.task('clean:components',
 	getComponentsTasks('clean:components'),
-	function() {
-		return true
+	function (cb) {
+		cb()
 });
 
 // Copy
 gulp.task('copy:components',
 	getComponentsTasks('copy:components'),
-	function() {
-		return true;
+	function (cb) {
+		cb();
 });
 
 // Watch
 gulp.task('watch:components',
 	getComponentsTasks('watch:components'),
-	function() {
-		return true;
+	function (cb) {
+		cb();
 });
 
 exports.getComponents = getComponents;

@@ -16,7 +16,6 @@ if (config.hasOwnProperty('browserSyncProxy'))
 
 // Tools / Dependencies
 var browserSync = require('browser-sync');
-var requireDir  = require('require-dir');
 var zip         = require('gulp-zip');
 
 // Browser sync
@@ -38,8 +37,8 @@ gulp.task(
 		'clean:packages',
 		'clean:plugins',
 		'clean:templates'
-	), function() {
-		return true;
+	), function(cb) {
+		cb();
 });
 
 // Copy to test site
@@ -51,8 +50,8 @@ gulp.task('copy', gulp.series(
 		'copy:packages',
 		'copy:plugins',
 		'copy:templates'
-	), function() {
-		return true;
+	), function(cb) {
+		cb();
 });
 
 // Watch for file changes
@@ -64,8 +63,8 @@ gulp.task('watch', gulp.series(
 		'watch:packages',
 		'watch:plugins',
 		'watch:templates'
-	), function() {
-		return true;
+	), function(cb) {
+		cb();
 });
 
 gulp.task('release', function () {
@@ -100,5 +99,6 @@ var defaultTasks = config.hasOwnProperty('defaultTasks') ?
 	config.defaultTasks : gulp.series('copy', 'watch', 'browser-sync');
 
 // Default task
-gulp.task('default', defaultTasks, function() {
+gulp.task('default', defaultTasks, function(cb) {
+	cb()
 });
