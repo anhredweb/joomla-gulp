@@ -62,12 +62,6 @@ function getModulesTasks(baseTask, app) {
 	return result;
 }
 
-// Clean
-gulp.task('clean:modules',
-	gulp.series('clean:modules.frontend', 'clean:modules.backend'),
-	function() {
-		return true
-});
 gulp.task('clean:modules.frontend',
 	getModulesTasks('clean:modules', 'frontend'),
 	function() {
@@ -79,12 +73,13 @@ gulp.task('clean:modules.backend',
 		return true;
 });
 
-// Copy
-gulp.task('copy:modules',
-	gulp.series('copy:modules.frontend', 'copy:modules.backend'),
+// Clean
+gulp.task('clean:modules',
+	gulp.series('clean:modules.frontend', 'clean:modules.backend'),
 	function() {
-		return true;
-});
+		return true
+	});
+
 gulp.task('copy:modules.frontend',
 	getModulesTasks('copy:modules', 'frontend'),
 	function() {
@@ -96,12 +91,13 @@ gulp.task('copy:modules.backend',
 		return true;
 });
 
-// Watch
-gulp.task('watch:modules',
-	gulp.series('watch:modules.frontend', 'watch:modules.backend'),
+// Copy
+gulp.task('copy:modules',
+	gulp.series('copy:modules.frontend', 'copy:modules.backend'),
 	function() {
 		return true;
-});
+	});
+
 gulp.task('watch:modules.frontend',
 	getModulesTasks('watch:modules', 'frontend'),
 	function() {
@@ -112,6 +108,13 @@ gulp.task('watch:modules.backend',
 	function() {
 		return true;
 });
+
+// Watch
+gulp.task('watch:modules',
+	gulp.series('watch:modules.frontend', 'watch:modules.backend'),
+	function() {
+		return true;
+	});
 
 exports.getModules = getModules;
 exports.getModulesTasks = getModulesTasks;
