@@ -48,7 +48,7 @@ function getMediaTasks(baseTask) {
 		return gulp.series.apply(gulp, tasks);
 	}
 
-	return gulp.task(baseTask + '.' + app, function () {
+	return gulp.task(baseTask, function () {
 		return true;
 	})
 }
