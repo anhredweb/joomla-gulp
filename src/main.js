@@ -20,6 +20,9 @@ var requireDir  = require('require-dir');
 var zip         = require('gulp-zip');
 
 // Browser sync
+var browserConfig = config.hasOwnProperty('browserConfig') ?
+	config.browserConfig : defaultBrowserConfig;
+
 gulp.task('browser-sync', function() {
     return browserSync(browserConfig);
 });
@@ -91,10 +94,6 @@ gulp.task('release', function () {
 		.pipe(zip(extension.name + '-' + extension.version + '.zip'))
 		.pipe(gulp.dest('releases'));
 });
-
-
-var browserConfig = config.hasOwnProperty('browserConfig') ?
-	config.browserConfig : defaultBrowserConfig;
 
 // Check if config has defaultTasks defined
 var defaultTasks = config.hasOwnProperty('defaultTasks') ?
