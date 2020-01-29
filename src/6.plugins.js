@@ -55,11 +55,9 @@ function getPluginsTasks(baseTask) {
 		return gulp.series.apply(gulp, tasks);
 	}
 
-	var result = gulp.task(baseTask, function(cb){
-		cb();
-	});
-
-	return result;
+	return gulp.task(baseTask + '.' + app, function () {
+		return true;
+	})
 }
 
 // Clean
