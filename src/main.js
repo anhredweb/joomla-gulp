@@ -14,11 +14,6 @@ if (config.hasOwnProperty('browserSyncProxy'))
 	defaultBrowserConfig.proxy = config.browserSyncProxy;
 }
 
-var browserConfig = config.hasOwnProperty('browserConfig') ? config.browserConfig : defaultBrowserConfig;
-
-// Check if config has defaultTasks defined
-var defaultTasks = config.hasOwnProperty('defaultTasks') ? config.defaultTasks : gulp.series('copy', 'watch', 'browser-sync');
-
 // Tools / Dependencies
 var browserSync = require('browser-sync');
 var requireDir  = require('require-dir');
@@ -96,6 +91,14 @@ gulp.task('release', function () {
 		.pipe(zip(extension.name + '-' + extension.version + '.zip'))
 		.pipe(gulp.dest('releases'));
 });
+
+
+var browserConfig = config.hasOwnProperty('browserConfig') ?
+	config.browserConfig : defaultBrowserConfig;
+
+// Check if config has defaultTasks defined
+var defaultTasks = config.hasOwnProperty('defaultTasks') ?
+	config.defaultTasks : gulp.series('copy', 'watch', 'browser-sync');
 
 // Default task
 gulp.task('default', defaultTasks, function() {

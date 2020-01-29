@@ -54,7 +54,7 @@ function getTemplatesTasks(baseTask, app) {
 
 // Clean test site
 gulp.task('clean:templates',
-	['clean:templates.frontend', 'clean:templates.backend'],
+	gulp.series('clean:templates.frontend', 'clean:templates.backend'),
 	function() {
 		return true
 });
@@ -71,7 +71,7 @@ gulp.task('clean:templates.backend',
 
 // Copy to test site
 gulp.task('copy:templates',
-	['copy:templates.frontend', 'copy:templates.backend'],
+	gulp.series('copy:templates.frontend', 'copy:templates.backend'),
 	function() {
 		return true;
 });
@@ -88,7 +88,7 @@ gulp.task('copy:templates.backend',
 
 // Watch
 gulp.task('watch:templates',
-	['watch:templates.frontend', 'watch:templates.backend'],
+	gulp.series('watch:templates.frontend', 'watch:templates.backend'),
 	function() {
 		return true;
 });
