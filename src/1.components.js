@@ -43,7 +43,16 @@ function getComponentsTasks(baseTask) {
 	    tasks.push(baseTask + '.' + components[index]);
 	}
 
-	return gulp.series.apply(gulp, tasks);
+	if (tasks.length > 0)
+	{
+		return gulp.series.apply(gulp, tasks);
+	}
+
+	var result = gulp.task(baseTask, function(cb){
+		cb();
+	});
+
+	return result;
 }
 
 // Clean

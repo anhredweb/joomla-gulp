@@ -50,12 +50,21 @@ function getModulesTasks(baseTask, app) {
 		}
 	}
 
-	return gulp.series(tasks.join());
+	if (tasks.length > 0)
+	{
+		return gulp.series.apply(gulp, tasks);
+	}
+
+	var result = gulp.task(baseTask, function(cb){
+		cb();
+	});
+
+	return result;
 }
 
 // Clean
 gulp.task('clean:modules',
-	['clean:modules.frontend', 'clean:modules.backend'],
+	gulp.series('clean:modules.frontend', 'clean:modules.backend'),
 	function() {
 		return true
 });
@@ -72,7 +81,7 @@ gulp.task('clean:modules.backend',
 
 // Copy
 gulp.task('copy:modules',
-	['copy:modules.frontend', 'copy:modules.backend'],
+	gulp.series('copy:modules.frontend', 'copy:modules.backend'),
 	function() {
 		return true;
 });
@@ -89,7 +98,7 @@ gulp.task('copy:modules.backend',
 
 // Watch
 gulp.task('watch:modules',
-	['watch:modules.frontend', 'watch:modules.backend'],
+	gulp.series('watch:modules.frontend', 'watch:modules.backend'),
 	function() {
 		return true;
 });
