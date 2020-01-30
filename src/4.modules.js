@@ -41,23 +41,17 @@ function getModules(app) {
  * @return  array
  */
 function getModulesTasks(baseTask, app) {
-	var tasks = [];
 	var modules = getModules(app);
+	var tasks = [];
 
-	if (modules) {
-		for (index = 0; index < modules.length; ++index) {
-		    tasks.push(baseTask + '.' + modules[index]);
-		}
+	if (modules.length > 0) {
+		modules.forEach((module) => {
+			gulp.task(baseTask + '.' + module, (cb) => {cb()});
+			tasks.push(baseTask + '.' + module);
+		});
 	}
 
-	if (tasks.length > 0)
-	{
-		return gulp.series(tasks)();
-	}
-
-	return gulp.task(baseTask + '.' + app, function (cb) {
-		cb();
-	})
+	return gulp.series(tasks);
 }
 
 gulp.task('clean:modules.frontend',
