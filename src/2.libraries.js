@@ -45,7 +45,7 @@ function getLibrariesTasks(baseTask) {
 
 	if (tasks.length > 0)
 	{
-		return gulp.series.apply(gulp, tasks);
+		return gulp.series(tasks)();
 	}
 
 	return gulp.task(baseTask, function (cb) {
